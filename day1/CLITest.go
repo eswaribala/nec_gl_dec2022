@@ -7,6 +7,7 @@ import (
 
 func main() {
 	args := os.Args
+	fmt.Println("Testing....")
 	fmt.Println(len(args))
 	if len(args) == 4 {
 		result := configureServer(args)
