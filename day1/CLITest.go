@@ -12,7 +12,7 @@ func main() {
 	fmt.Println(len(args))
 	if len(args) == 4 {
 		result, err := configureServer(args)
-		if err != nil {
+		if err == nil {
 			for index, value := range result {
 				fmt.Println(index, value)
 			}
@@ -26,9 +26,9 @@ func configureServer(serverProperties []string) ([]string, error) {
 	//create another array
 	serverProps := make([]string, 4)
 	//traditional loop
-	for i := 1; i < len(serverProperties); i++ {
+	/*for i := 1; i < len(serverProperties); i++ {
 		fmt.Println(serverProperties[i])
-	}
+	}*/
 
 	port, err := strconv.Atoi(serverProperties[1])
 
