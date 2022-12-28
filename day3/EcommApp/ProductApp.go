@@ -20,6 +20,7 @@ func main() {
 
 	var productInstance models.IECommFacade
 	productInstance = product
+	productInstance.Create()
 	productInstance.View(true)
 
 	//testing
