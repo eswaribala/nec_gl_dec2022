@@ -7,14 +7,20 @@ import (
 )
 
 func main() {
-
+	//it returns address
 	product := new(models.Product)
 	product.ProductId = 845843
 	product.Name = "Laptop"
 	product.Cost = 3429765
-	product.DOP = models.Date{Day: 12, Month: 10, Year: 2022}
-	fmt.Printf("Product=%+v", product)
+	product.DOP.Day = 12
+	product.DOP.Month = 10
+	product.DOP.Year = 2022
+
 	fmt.Println(unsafe.Sizeof(product))
+
+	var productInstance models.IECommFacade
+	productInstance = product
+	productInstance.View()
 
 	//testing
 	/*
