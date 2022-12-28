@@ -18,18 +18,17 @@ type Category struct {
 }
 
 type Product struct {
+	//exportable field
 	ProductId int32
 	Name      string
 	Cost      int64
 	//composition
 	DOP Date
-}
-
-// IEcommFacade interface
-type IECommFacade interface {
-	Create()
-	//View abstract method
-	View(permission bool)
+	//static initialization
+	/*Order struct {
+		OrderId int32
+		Amount  int64
+	}*/
 }
 
 func (product Product) Create() {

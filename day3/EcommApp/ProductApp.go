@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"necdec2022/day3/facades"
 	"necdec2022/day3/models"
 	"unsafe"
 )
@@ -18,7 +19,7 @@ func main() {
 
 	fmt.Println(unsafe.Sizeof(product))
 
-	var productInstance models.IECommFacade
+	var productInstance facades.IECommFacade
 	productInstance = product
 	//productInstance.Create()
 	productInstance.View(true)
