@@ -9,5 +9,5 @@ func main() {
 	category.Name = "Electronics"
 	var categoryInstance models.IECommFacade
 	categoryInstance = category
-	categoryInstance.View()
+	categoryInstance.View(false)
 }

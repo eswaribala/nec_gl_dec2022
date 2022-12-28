@@ -20,7 +20,7 @@ func main() {
 
 	var productInstance models.IECommFacade
 	productInstance = product
-	productInstance.View()
+	productInstance.View(true)
 
 	//testing
 	/*

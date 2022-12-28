@@ -1,6 +1,8 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Date struct {
 	Day   int8
@@ -25,16 +27,25 @@ type Product struct {
 type IECommFacade interface {
 
 	//View abstract method
-	View()
+	View(permission bool)
 }
 
 //implementation methods
 
-func (product *Product) View() {
-	fmt.Printf("Product%+v", product)
+func (product *Product) View(permission bool) {
+	if permission {
+		fmt.Printf("Product%+v", product)
+	} else {
+		fmt.Println("Not Authenticated....")
+	}
+
 }
-func (category *Category) View() {
-	fmt.Printf("Category%+v", category)
+func (category *Category) View(permission bool) {
+	if permission {
+		fmt.Printf("Category%+v", category)
+	} else {
+		fmt.Println("Not Authenticated....")
+	}
 }
 
 //virtual inheritance pending????
