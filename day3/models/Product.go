@@ -12,3 +12,14 @@ type Product struct {
 	Cost      int64
 	DOP       Date
 }
+
+// IProductFacade interface
+type IProductFacade interface {
+	// Add abstract method
+	Add()
+	//Modify abstract method
+	Modify()
+	Delete()
+	//View abstract method
+	View()
+}
