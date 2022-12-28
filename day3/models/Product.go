@@ -33,7 +33,7 @@ type IECommFacade interface {
 }
 
 func (product Product) Create() {
-	date := strconv.Itoa(int(product.DOP.Day)) + strconv.Itoa(int(product.DOP.Month)) + strconv.Itoa(int(product.DOP.Year))
+	date := strconv.Itoa(int(product.DOP.Day)) + "/" + strconv.Itoa(int(product.DOP.Month)) + "/" + strconv.Itoa(int(product.DOP.Year))
 	result, err := dao.CreateProduct(product.ProductId, product.Name, product.Cost, date)
 	if err == nil {
 		fmt.Println(result)
@@ -46,7 +46,7 @@ func (product Product) Create() {
 //call by value
 func (product Product) View(permission bool) {
 	if permission {
-		fmt.Printf("Product%+v", product)
+		dao.ViewProducts()
 	} else {
 		fmt.Println("Not Authenticated....")
 	}

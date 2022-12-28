@@ -2,6 +2,9 @@ package dao
 
 import (
 	"database/sql"
+	"fmt"
+	"necdec2022/day3/dto"
+
 	//blank import -> init()
 	_ "github.com/go-sql-driver/mysql"
 	"log"
@@ -28,5 +31,24 @@ func CreateProduct(ProductId int32, Name string, Cost int64, DOP string) (int64,
 		log.Fatal("Error occurred while saving...", err)
 	}
 	return result.RowsAffected()
+
+}
+func ViewProducts() {
+
+	db := DBHelper()
+	defer db.Close()
+	queryString := "Select * from Product;"
+	var productResponse dto.Product
+	rows, err := db.Query(queryString)
+	if err != nil {
+		log.Fatal("Error occurred while saving...", err)
+	} else {
+		for rows.Next() {
+			rows.Scan(&productResponse.ProductId,
+				&productResponse.Name, &productResponse.Cost, &productResponse.DOP)
+			fmt.Printf("%v\n", productResponse)
+		}
+
+	}
 
 }
