@@ -30,9 +30,9 @@ type IECommFacade interface {
 	View(permission bool)
 }
 
-//implementation methods
-
-func (product *Product) View(permission bool) {
+// View implementation methods
+//call by value
+func (product Product) View(permission bool) {
 	if permission {
 		fmt.Printf("Product%+v", product)
 	} else {
@@ -40,6 +40,8 @@ func (product *Product) View(permission bool) {
 	}
 
 }
+
+// View call by address
 func (category *Category) View(permission bool) {
 	if permission {
 		fmt.Printf("Category%+v", category)

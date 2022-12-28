@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	//it returns address
-	product := new(models.Product)
+
+	product := models.Product{}
 	product.ProductId = 845843
 	product.Name = "Laptop"
 	product.Cost = 3429765
