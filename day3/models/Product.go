@@ -2,6 +2,8 @@ package models
 
 import (
 	"fmt"
+	"necdec2022/day3/dao"
+	"strconv"
 )
 
 type Date struct {
@@ -25,9 +27,19 @@ type Product struct {
 
 // IEcommFacade interface
 type IECommFacade interface {
-
+	Create()
 	//View abstract method
 	View(permission bool)
+}
+
+func (product Product) Create() {
+	date := strconv.Itoa(int(product.DOP.Day)) + strconv.Itoa(int(product.DOP.Month)) + strconv.Itoa(int(product.DOP.Year))
+	result, err := dao.CreateProduct(product.ProductId, product.Name, product.Cost, date)
+	if err == nil {
+		fmt.Println(result)
+	} else {
+		fmt.Println(err)
+	}
 }
 
 // View implementation methods
