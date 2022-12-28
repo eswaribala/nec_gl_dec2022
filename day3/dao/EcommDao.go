@@ -22,7 +22,7 @@ func CreateProduct(ProductId int32, Name string, Cost int64, DOP string) (int64,
 
 	db := DBHelper()
 	defer db.Close()
-	queryString := "Insert into Product (ProductId,Name,Cost,DOP) values(?,?,?)"
+	queryString := "Insert into Product (ProductId,Name,Cost,DOP) values(?,?,?,?)"
 	result, err := db.Exec(queryString, ProductId, Name, Cost, DOP)
 	if err != nil {
 		log.Fatal("Error occurred while saving...", err)
