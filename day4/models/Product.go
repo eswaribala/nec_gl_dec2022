@@ -19,3 +19,20 @@ type Product struct {
 	//composition
 	DOP Date
 }
+
+type Products []Product
+
+//total no of elements
+func (products Products) Len() int {
+	return len(products)
+}
+
+//swap
+func (products Products) Swap(i, j int) {
+	products[i], products[j] = products[j], products[i]
+}
+
+//attribue/property
+func (products Products) Less(i, j int) bool {
+	return products[i].Name < products[j].Name
+}
