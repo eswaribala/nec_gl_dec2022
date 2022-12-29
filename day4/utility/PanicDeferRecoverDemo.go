@@ -18,13 +18,10 @@ func RecoverAccount() {
 	}
 }
 
-func ValidateAccount(accountNo int32, password string) {
+func ValidatePassword(password string) {
 	defer RecoverAccount()
 	//finally
 	defer finally()
-	if accountNo < 0 {
-		panic("Account No should be 18 digit number") //try block
-	}
 
 	if len(password) == 0 {
 		panic("Password cannot be null") //try block
@@ -35,9 +32,23 @@ func ValidateAccount(accountNo int32, password string) {
 
 }
 
+func ValidateAccountNo(accountNo int32) {
+	//defer RecoverAccount()
+	//finally
+	//defer finally()
+	if accountNo < 0 {
+		panic("Account No should be 18 digit number") //try block
+	}
+
+	fmt.Printf("%d\n", accountNo)
+	fmt.Println("Validate function return Normal")
+
+}
+
 func main() {
-	accountNo = -8468746
+	accountNo = 8468746
 	defer fmt.Println("Running at the end from main")
-	ValidateAccount(accountNo, "35696")
+	ValidateAccountNo(accountNo)
+	ValidatePassword("")
 	//fmt.Println("Running at the end from main")
 }
