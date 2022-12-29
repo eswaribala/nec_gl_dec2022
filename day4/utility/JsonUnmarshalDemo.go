@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"reflect"
 )
 
 func main() {
@@ -12,8 +13,15 @@ func main() {
 
 	json.Unmarshal([]byte(users), &result)
 	for _, value := range result {
-		for innerkey, innervalue := range value {
-			fmt.Printf("%s=>%s\n", innerkey, innervalue)
+
+		for innerKey, innerValue := range value {
+
+			if reflect.TypeOf(innerValue).String() == "map[string]interface {}" {
+				fmt.Printf("%+v", innerValue)
+
+			} else {
+				fmt.Printf("%s->%s\n", innerKey, innerValue)
+			}
 		}
 	}
 }
