@@ -29,6 +29,8 @@ type Product struct {
 		OrderId int32
 		Amount  int64
 	}*/
+
+	Image []byte
 }
 
 func (product Product) Create() {
@@ -39,6 +41,10 @@ func (product Product) Create() {
 	} else {
 		fmt.Println(err)
 	}
+}
+
+func (*Category) Create() {
+
 }
 
 // View implementation methods

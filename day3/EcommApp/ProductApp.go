@@ -10,7 +10,7 @@ import (
 func main() {
 
 	product := models.Product{}
-	product.ProductId = 845844
+	product.ProductId = 845824
 	product.Name = "Mobile"
 	product.Cost = 342976
 	product.DOP.Day = 12
@@ -21,8 +21,8 @@ func main() {
 
 	var productInstance facades.IECommFacade
 	productInstance = product
-	//productInstance.Create()
-	productInstance.View(true)
+	productInstance.Create()
+	//productInstance.View(true)
 
 	//testing
 	/*

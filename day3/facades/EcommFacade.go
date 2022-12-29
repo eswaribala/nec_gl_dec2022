@@ -1,8 +1,9 @@
 package facades
 
-// IEcommFacade interface
+// IECommFacade IEcommFacade interface
 type IECommFacade interface {
 	Create()
+
 	//View abstract method
 	View(permission bool)
 }
