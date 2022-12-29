@@ -25,10 +25,10 @@ type Product struct {
 	//composition
 	DOP Date
 	//static initialization
-	/*Order struct {
-		OrderId int32
-		Amount  int64
-	}*/
+	//Order struct {
+	//	OrderId int32
+	//	Amount  int64
+	//	}
 
 	Image []byte
 }
