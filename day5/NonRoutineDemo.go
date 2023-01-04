@@ -10,7 +10,7 @@ func accessLink(link string) {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println(response.StatusCode)
+		fmt.Printf("link:%s,status code:%d\n", link, response.StatusCode)
 	}
 
 }
