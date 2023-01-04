@@ -11,6 +11,7 @@ func write(ch chan int) {
 	for i := 0; i < 10; i++ {
 		ch <- int(rand.Int31n(10000))
 		fmt.Println("Successfully Wrote", i, "to channel")
+
 		/*if i == 3 {
 			ch = make(chan int, 10)
 		}*/

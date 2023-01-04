@@ -17,7 +17,7 @@ func main() {
 	//anonymous function
 	go func(message string, dc chan string) {
 
-		time.Sleep(1000)
+		//time.Sleep(1000)
 		if strings.ContainsAny(message, "Delta") {
 			dc <- "Delta Ready"
 		} else {
@@ -51,7 +51,7 @@ func main() {
 
 func ecoTrading(message string, et chan string) {
 
-	time.Sleep(2000)
+	time.Sleep(5000)
 	if len(message) == 0 {
 		et <- "Message cannot be empty"
 	} else {
@@ -62,7 +62,7 @@ func ecoTrading(message string, et chan string) {
 
 func nonEcoTrading(message string, net chan string) {
 
-	time.Sleep(3000)
+	time.Sleep(7000)
 	if strings.HasPrefix(message, "Leg1") {
 		net <- "Non Economic Trading Done..."
 	} else {
