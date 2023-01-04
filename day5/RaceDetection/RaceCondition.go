@@ -7,6 +7,7 @@ import (
 
 var AccountBalance int = 5000
 var wg1 sync.WaitGroup
+var mutex sync.Mutex
 
 func main() {
 
@@ -17,14 +18,15 @@ func main() {
 }
 
 func deposit(amount int) {
-
+	mutex.Lock()
 	AccountBalance = AccountBalance + amount
-
+	mutex.Unlock()
 	wg1.Done()
 }
 
 func viewBalance() {
-
+	mutex.Lock()
 	fmt.Printf("Account Balance:%d", AccountBalance)
+	mutex.Unlock()
 	wg1.Done()
 }
