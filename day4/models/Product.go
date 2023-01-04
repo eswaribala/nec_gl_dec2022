@@ -1,14 +1,32 @@
 package models
 
+import "encoding/json"
+
 type Date struct {
 	Day   int8
 	Month int8
 	Year  int16
 }
 
+type Name struct {
+	CommonName   string
+	CategoryName string
+}
+
+func (n *Name) UnmarshalJSON(bytes []byte) error {
+	var name string
+	err := json.Unmarshal(bytes, &name)
+	if err != nil {
+		return err
+	}
+	n.CommonName = name
+	n.CategoryName = ""
+	return nil
+}
+
 type Category struct {
-	CategoryId int32
-	Name       string
+	CategoryId int32 `json:"categoryId"`
+	Name       Name  `json:"name"`
 }
 
 type Product struct {

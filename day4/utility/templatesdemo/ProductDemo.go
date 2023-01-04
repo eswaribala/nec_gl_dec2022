@@ -34,7 +34,7 @@ func renderTemplate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func main() {
-	http.HandleFunc("/", renderTemplate)
+	http.HandleFunc("/home", renderTemplate)
 	err := http.ListenAndServe(CONNECTION_HOST+":"+CONNECTION_PORT, nil)
 	if err != nil {
 		log.Fatal("error starting http server : ", err)
