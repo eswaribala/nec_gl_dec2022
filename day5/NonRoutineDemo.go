@@ -26,7 +26,7 @@ func main() {
 
 	for _, link := range links {
 		//no communication between main and routines
-		accessLink(link, nil)
+		accessLink(link)
 	}
 
 }
