@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"runtime"
+	"time"
 )
 
 func goaccessLink(link string, pChannel chan string) {
@@ -32,7 +33,7 @@ func main() {
 		go goaccessLink(link, channel)
 	}
 	fmt.Printf("Number of routines running=%d\n", runtime.NumGoroutine())
-
+	time.Sleep(5 * time.Second)
 	for _ = range links {
 		fmt.Printf("response:%s\n", <-channel)
 	}
