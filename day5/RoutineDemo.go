@@ -30,9 +30,9 @@ func main() {
 		//no communication between main and routines
 		go goaccessLink(link, channel)
 	}
-
+	fmt.Printf("Number of routines running=%d\n", runtime.NumGoroutine())
 	for _ = range links {
 		fmt.Printf("response:%s\n", <-channel)
 	}
-	fmt.Printf("Number of routines running=%d\n", runtime.NumGoroutine())
+
 }
