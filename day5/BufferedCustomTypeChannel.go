@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
+	"necdec2022/day5/models"
 	"time"
 )
 
-func write(ch chan int) {
+func ProductWrite(ch chan models.Product) {
 
 	for i := 0; i < 10; i++ {
-		ch <- int(rand.Int31n(10000))
+		ch <- models.Product{ProductId: 237867, Name: "Door", Cost: 20000,
+			DOP: models.Date{Day: 11, Month: 12, Year: 2022}}
 		fmt.Println("Successfully Wrote", i, "to channel")
 		/*if i == 3 {
 			ch = make(chan int, 10)
@@ -20,9 +21,9 @@ func write(ch chan int) {
 
 func main() {
 	//producer unblocked even it reaches capacity????
-	ch := make(chan int, 3)
+	ch := make(chan models.Product, 3)
 
-	go write(ch)
+	go ProductWrite(ch)
 	time.Sleep(2 * time.Second)
 	for value := range ch {
 		fmt.Println("Read Value", value, "from ch")
