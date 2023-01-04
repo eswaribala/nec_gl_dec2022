@@ -8,7 +8,8 @@ import (
 
 func main() {
 	alice := models.Category{}
-	aliceJson := `{"categoryId": 237867, "name": "Electronics"}`
+	//aliceJson := `{"categoryId": 237867, "name": "Electronics"}`
+	aliceJson := `{"categoryId": 237867, "name": {"commonName":"Electronics","categoryName":""}}`
 	err := json.Unmarshal([]byte(aliceJson), &alice)
 	if err != nil {
 		panic(err)

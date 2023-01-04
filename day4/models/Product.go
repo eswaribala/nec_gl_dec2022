@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type Date struct {
 	Day   int8
 	Month int8
@@ -9,10 +7,11 @@ type Date struct {
 }
 
 type Name struct {
-	CommonName   string
-	CategoryName string
+	CommonName   string `json:"commonName"`
+	CategoryName string `json:"categoryName"`
 }
 
+/*
 func (n *Name) UnmarshalJSON(bytes []byte) error {
 	var name string
 	err := json.Unmarshal(bytes, &name)
@@ -23,7 +22,7 @@ func (n *Name) UnmarshalJSON(bytes []byte) error {
 	n.CategoryName = ""
 	return nil
 }
-
+*/
 type Category struct {
 	CategoryId int32 `json:"categoryId"`
 	Name       Name  `json:"name"`
