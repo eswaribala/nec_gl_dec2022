@@ -33,6 +33,6 @@ func main() {
 		go waitAccessLink(link)
 	}
 	wg.Wait()
-	fmt.Printf("Number of routines running=%d\n", runtime.NumGoroutine())
+	fmt.Printf("Main Completes the task")
 
 }
