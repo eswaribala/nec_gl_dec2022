@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"necdec2022/day5/models"
 	"time"
 )
@@ -9,12 +10,10 @@ import (
 func ProductWrite(ch chan models.Product) {
 
 	for i := 0; i < 10; i++ {
-		ch <- models.Product{ProductId: 237867, Name: "Door", Cost: 20000,
+		ch <- models.Product{ProductId: rand.Int31n(10000), Name: "Door", Cost: rand.Int63n(10000),
 			DOP: models.Date{Day: 11, Month: 12, Year: 2022}}
 		fmt.Println("Successfully Wrote", i, "to channel")
-		/*if i == 3 {
-			ch = make(chan int, 10)
-		}*/
+
 	}
 	close(ch)
 }
