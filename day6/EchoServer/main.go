@@ -5,41 +5,41 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"strings"
 	"time"
 )
 
-func main() {
-	listener, err := net.Listen("tcp", "localhost:3333")
+//!+
+func echo(c net.Conn, shout string, delay time.Duration) {
+	fmt.Fprintln(c, "\t", strings.ToUpper(shout))
+	time.Sleep(delay)
+	fmt.Fprintln(c, "\t", shout)
+	time.Sleep(delay)
+	fmt.Fprintln(c, "\t", strings.ToLower(shout))
+}
 
+func handleConn(c net.Conn) {
+	input := bufio.NewScanner(c)
+	for input.Scan() {
+		echo(c, input.Text(), 1*time.Second)
+	}
+	// NOTE: ignoring potential errors from input.Err()
+	c.Close()
+}
+
+//!-
+
+func main() {
+	l, err := net.Listen("tcp", "localhost:8000")
 	if err != nil {
-		log.Println("Connection Error")
+		log.Fatal(err)
 	}
 	for {
-		conn, err := listener.Accept()
-		fmt.Println("Connection Established", conn.LocalAddr().String())
+		conn, err := l.Accept()
 		if err != nil {
-			log.Fatal(err)
+			log.Print(err) // e.g., connection aborted
 			continue
 		}
-
-		handleClientInput(conn)
+		go handleConn(conn)
 	}
-}
-
-func handleClientInput(conn net.Conn) {
-	defer conn.Close()
-	for {
-		input := bufio.NewScanner(conn)
-		if input.Scan() {
-			echo(conn, input.Text(), 500)
-		}
-		
-		time.Sleep(1 * time.Second)
-	}
-}
-
-func echo(conn net.Conn, input string, delay time.Duration) {
-
-	fmt.Fprintf(conn, "The Message received from the client%s", input)
-	time.Sleep(delay * time.Second)
 }
