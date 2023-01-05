@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"io"
 	"log"
 	"net"
 	"time"
@@ -22,17 +22,24 @@ func main() {
 			continue
 		}
 
-		handleClock(conn)
+		handleClientInput(conn)
 	}
 }
 
-func handleClock(conn net.Conn) {
+func handleClientInput(conn net.Conn) {
 	defer conn.Close()
 	for {
-		_, err := io.WriteString(conn, time.Now().Format("15:04:05")+"\t")
-		if err != nil {
-			log.Fatal(err)
+		input := bufio.NewScanner(conn)
+		if input.Scan() {
+			echo(conn, input.Text(), 500)
 		}
+		
 		time.Sleep(1 * time.Second)
 	}
+}
+
+func echo(conn net.Conn, input string, delay time.Duration) {
+
+	fmt.Fprintf(conn, "The Message received from the client%s", input)
+	time.Sleep(delay * time.Second)
 }
