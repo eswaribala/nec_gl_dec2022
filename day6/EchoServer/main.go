@@ -11,11 +11,10 @@ import (
 
 //!+
 func echo(c net.Conn, shout string, delay time.Duration) {
-	fmt.Fprintln(c, "\t", strings.ToUpper(shout))
+	fmt.Fprintf(c, "Message received from client%s\t", strings.ToUpper(shout))
 	time.Sleep(delay)
-	fmt.Fprintln(c, "\t", shout)
-	time.Sleep(delay)
-	fmt.Fprintln(c, "\t", strings.ToLower(shout))
+	fmt.Fprintf(c, "Message received from client%s\t", shout)
+
 }
 
 func handleConn(c net.Conn) {
@@ -30,7 +29,7 @@ func handleConn(c net.Conn) {
 //!-
 
 func main() {
-	l, err := net.Listen("tcp", "localhost:8000")
+	l, err := net.Listen("tcp", "localhost:3333")
 	if err != nil {
 		log.Fatal(err)
 	}
