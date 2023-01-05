@@ -12,9 +12,6 @@ func write(ch chan int) {
 		ch <- int(rand.Int31n(10000))
 		fmt.Println("Successfully Wrote", i, "to channel")
 
-		/*if i == 3 {
-			ch = make(chan int, 10)
-		}*/
 	}
 	close(ch)
 }
@@ -24,9 +21,11 @@ func main() {
 	ch := make(chan int, 3)
 
 	go write(ch)
-	time.Sleep(2 * time.Second)
+	time.Sleep(10 * time.Second)
+
 	for value := range ch {
 		fmt.Println("Read Value", value, "from ch")
 		time.Sleep(2 * time.Second)
 	}
+
 }
