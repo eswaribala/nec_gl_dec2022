@@ -22,7 +22,7 @@ func main() {
 		colly.Async(),
 	)
 
-	c.OnHTML("title", func(e *colly.HTMLElement) {
+	c.OnHTML("a", func(e *colly.HTMLElement) {
 		fmt.Println(e.Text)
 	})
 
