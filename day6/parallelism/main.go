@@ -114,7 +114,7 @@ func OrderSuite(wg *sync.WaitGroup) {
 
 func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	fmt.Printf("Number of Processors in use %d", runtime.NumCPU())
+	fmt.Printf("Number of Processors in use %d\n", runtime.NumCPU())
 }
 
 var listOfTasks = []func(wg *sync.WaitGroup){
@@ -122,7 +122,7 @@ var listOfTasks = []func(wg *sync.WaitGroup){
 }
 
 func main() {
-	fmt.Println("Before Calling Routines", threadProfile.Count())
+	fmt.Printf("Before Calling Routines:%d\n", threadProfile.Count())
 	wg.Add(len(listOfTasks))
 
 	for _, task := range listOfTasks {
@@ -131,6 +131,6 @@ func main() {
 
 	wg.Wait()
 
-	fmt.Println("Returned to main and completed all the tasks", threadProfile.Count())
+	fmt.Printf("Returned to main and completed all the tasks:%d\n", threadProfile.Count())
 
 }
