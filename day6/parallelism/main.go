@@ -12,7 +12,7 @@ import (
 )
 
 var wg sync.WaitGroup
-var threadProfile = pprof.Lookup("threadCreate")
+var threadProfile = pprof.Lookup("threadcreate")
 
 func BookTicket(wg *sync.WaitGroup) {
 
@@ -27,7 +27,7 @@ func BookTicket(wg *sync.WaitGroup) {
 	// Read up to len(b) bytes from the File
 	// Zero bytes written means end of file
 	// End of file returns error type io.EOF
-	byteSlice := make([]byte, 16)
+	byteSlice := make([]byte, 1000)
 	bytesRead, err := file.Read(byteSlice)
 	if err != nil {
 		log.Fatal(err)
