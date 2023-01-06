@@ -126,4 +126,21 @@ paths:
       summary: Get details for a given accountNo
       tags:
       - customers
+  /employees:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all employees
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get details of all employees
+      tags:
+      - employees
 swagger: "2.0"

@@ -12,8 +12,8 @@ import (
 // @Tags employees
 // @Accept  json
 // @Produce  json
-// @Success 200 {array} models.Customer
-// @Router /customers [get]
+// @Success 200 {array} string
+// @Router /employees [get]
 func GetEmployees(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	// Create a Resty Client

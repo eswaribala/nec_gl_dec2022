@@ -36,6 +36,7 @@ func main() {
 	//router.HandleFunc("/customers/{accountNo}", stores.UpdateCustomer).Methods("PUT")
 	// Delete
 	router.HandleFunc("/customers/{accountNo}", stores.DeleteCustomerById).Methods("DELETE")
+	router.HandleFunc("/employees", stores.GetEmployees).Methods("GET")
 	// Initialize db connection
 	stores.InitDB()
 
