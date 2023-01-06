@@ -1,8 +1,20 @@
 package main
 
+import (
+	"github.com/gorilla/mux"
+	"necdec2022/day7/stores"
+
+	_ "github.com/swaggo/files"
+	_ "github.com/swaggo/gin-swagger"
+	_ "github.com/swaggo/http-swagger"
+	httpSwagger "github.com/swaggo/http-swagger"
+	"log"
+	"net/http"
+)
+
 // @title Customer API
 // @version 1.0
-// @description This is a sample service for managing Customer
+// @description This is api service for managing Customer
 // @termsOfService http://swagger.io/terms/
 // @contact.name API Support
 // @contact.email parameswaribala@gmail.com
@@ -11,5 +23,24 @@ package main
 // @host localhost:6064
 // @BasePath /
 func main() {
+	router := mux.NewRouter()
+	// Create
+	router.HandleFunc("/customers", stores.CreateCustomer).Methods("POST")
+	// Read
+	router.HandleFunc("/customers/{accountNo}", stores.GetCustomerById).Methods("GET")
+	// Read-all
+	router.HandleFunc("/customers", stores.GetCustomers).Methods("GET")
+	// Update
+	router.HandleFunc("/customers", stores.UpdateCustomer).Methods("PUT")
+	// Delete
+	router.HandleFunc("/customers/{accountNo}", stores.DeleteCustomerById).Methods("DELETE")
+	// Initialize db connection
+	stores.InitDB()
 
+	//log.Fatal(http.ListenAndServe(":7070", router))
+
+	// Swagger
+	router.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
+	//router.PathPrefix("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	log.Fatal(http.ListenAndServe(":6062", router))
 }
