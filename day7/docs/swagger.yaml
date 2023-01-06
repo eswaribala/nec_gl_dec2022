@@ -1,0 +1,107 @@
+basePath: /
+definitions:
+  models.Customer:
+    properties:
+      accountNo:
+        type: integer
+      address:
+        type: string
+      contactNo:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+host: localhost:6064
+info:
+  contact:
+    email: parameswaribala@gmail.com
+    name: API Support
+  description: This is api service for managing Customer
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Customer API
+  version: "1.0"
+paths:
+  /customers:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve customers from db
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Customer'
+            type: array
+      summary: Retrieving Customers
+      tags:
+      - customers
+    put:
+      consumes:
+      - application/json
+      description: Update the customer corresponding to the input AccountNo
+      parameters:
+      - description: ID of the customer to be updated
+        in: path
+        name: AccountNo
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Update customer identified by the given AccountNo
+      tags:
+      - customers
+  /customers/{accountNo}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the customer corresponding to the input accountNo
+      parameters:
+      - description: ID of the customer to be deleted
+        in: path
+        name: accountNo
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete customer identified by the given accountNo
+      tags:
+      - customers
+    get:
+      consumes:
+      - application/json
+      description: Get details of customer  corresponding to the input accountNo
+      parameters:
+      - description: ID of the Customer
+        in: path
+        name: accountNo
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Get details for a given accountNo
+      tags:
+      - customers
+swagger: "2.0"

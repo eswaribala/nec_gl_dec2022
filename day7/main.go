@@ -2,13 +2,15 @@ package main
 
 import (
 	"github.com/gorilla/mux"
-	"necdec2022/day7/stores"
+
+	_ "necdec2022/day7/docs"
 
 	_ "github.com/swaggo/files"
 	_ "github.com/swaggo/gin-swagger"
 	_ "github.com/swaggo/http-swagger"
 	httpSwagger "github.com/swaggo/http-swagger"
 	"log"
+	"necdec2022/day7/stores"
 	"net/http"
 )
 

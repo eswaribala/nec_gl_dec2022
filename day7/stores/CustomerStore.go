@@ -22,7 +22,7 @@ func InitDB() {
 		fmt.Println(err)
 		panic("failed to connect database")
 	}
-	db.Exec("Create Database NECCustomerDB2023")
+	//db.Exec("Create Database NECCustomerDB2023")
 	db.Exec("use NECCustomerDB2023")
 	//generate the tables
 	db.AutoMigrate(&models.Customer{})
