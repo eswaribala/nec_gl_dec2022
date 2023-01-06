@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	"necdec2022/day7/models"
 	"net/http"
@@ -67,9 +68,23 @@ func GetCustomers(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// get
+// GetCustomerById godoc
+// @Summary Get details for a given accountNo
+// @Description Get details of customer  corresponding to the input accountNo
+// @Tags customers
+// @Accept  json
+// @Produce  json
+// @Param accountNo path int true "ID of the Customer"
+// @Success 200 {object} models.Customer
+// @Router /customers/{accountNo} [get]
 func GetCustomerById(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	inputAccountNo := params["accountNo"]
 
+	var customer models.Customer
+	db.First(&customer, inputAccountNo)
+	json.NewEncoder(w).Encode(customer)
 }
 
 // delete
