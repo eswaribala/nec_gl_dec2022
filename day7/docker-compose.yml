@@ -28,6 +28,6 @@ services:
     networks:
       - default
     ports:
-      - "7070:7070"
+      - "6064:6064"
 volumes:
   data:
