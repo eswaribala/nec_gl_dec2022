@@ -47,21 +47,32 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 }
 
 // put
-func UpdateCustomer() {
+func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
+
+}
+
+// GetCustomers godoc
+// @Summary Retrieving Customers
+// @Description Retrieve customers from db
+// @Tags customers
+// @Accept  json
+// @Produce  json
+// @Success 200 {array} models.Customer
+// @Router /customers [get]
+func GetCustomers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var customers *[]models.Customer
+	db.Find(&customers)
+	json.NewEncoder(w).Encode(customers)
 
 }
 
 // get
-func GetCustomers() {
-
-}
-
-// get
-func GetCustomerById() {
+func GetCustomerById(w http.ResponseWriter, r *http.Request) {
 
 }
 
 // delete
-func DeleteCustomerById() {
+func DeleteCustomerById(w http.ResponseWriter, r *http.Request) {
 
 }
