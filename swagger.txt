@@ -1,6 +1,9 @@
 go get -u github.com/swaggo/swag/cmd/swag
 go get -u github.com/swaggo/http-swagger
 go get -u github.com/alecthomas/template
+go get -u github.com/swaggo/swag/cmd/swag
+go get -u github.com/swaggo/gin-swagger
+go get -u github.com/swaggo/files
 
 Generate Swagger documentation
 Let us divide this whole process of API documentation into 3 steps:
