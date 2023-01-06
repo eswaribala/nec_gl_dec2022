@@ -13,14 +13,14 @@ func main() {
 	//The append built-in function appends elements to the end of a slice. If
 	// it has sufficient capacity, the destination is resliced to accommodate the
 	// new elements. If it does not, a new underlying array will be allocated.
-	// Append returns the updated slice. It is therefore necessary to store the
+	// Append returns the updated slice. It is therefore necessary to stores the
 	// result of append, often in the variable holding the slice itself:
 	//	slice = append(slice, elem1, elem2)
 	//	slice = append(slice, anotherSlice...)
 	// As a special case, it is legal to append a string to a byte slice, like this:
 	//	slice = append([]byte("hello "), "world"...)
 	for i := 0; i < 10; i++ {
-		//you must store
+		//you must stores
 		countries = append(countries, "country"+strconv.Itoa(i))
 	}
 
