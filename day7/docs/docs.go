@@ -57,8 +57,8 @@ var doc = `{
                     }
                 }
             },
-            "put": {
-                "description": "Update the customer corresponding to the input AccountNo",
+            "post": {
+                "description": "Create a new customer with the input paylod",
                 "consumes": [
                     "application/json"
                 ],
@@ -68,14 +68,16 @@ var doc = `{
                 "tags": [
                     "customers"
                 ],
-                "summary": "Update customer identified by the given AccountNo",
+                "summary": "Create a new customer",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "ID of the customer to be updated",
-                        "name": "AccountNo",
-                        "in": "path",
-                        "required": true
+                        "description": "Create customer",
+                        "name": "customer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Customer"
+                        }
                     }
                 ],
                 "responses": {
@@ -106,6 +108,36 @@ var doc = `{
                         "type": "integer",
                         "description": "ID of the Customer",
                         "name": "accountNo",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Customer"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update the customer corresponding to the input AccountNo",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Update customer identified by the given AccountNo",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID of the customer to be updated",
+                        "name": "AccountNo",
                         "in": "path",
                         "required": true
                     }

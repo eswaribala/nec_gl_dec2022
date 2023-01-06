@@ -33,7 +33,7 @@ func main() {
 	// Read-all
 	router.HandleFunc("/customers", stores.GetCustomers).Methods("GET")
 	// Update
-	router.HandleFunc("/customers", stores.UpdateCustomer).Methods("PUT")
+	//router.HandleFunc("/customers/{accountNo}", stores.UpdateCustomer).Methods("PUT")
 	// Delete
 	router.HandleFunc("/customers/{accountNo}", stores.DeleteCustomerById).Methods("DELETE")
 	// Initialize db connection

@@ -30,15 +30,14 @@ func InitDB() {
 }
 
 // CreateCustomer godoc
-// @Summary Create a new Customer
-// @Description Create a new customer with the input payload
+// @Summary Create a new customer
+// @Description Create a new customer with the input paylod
 // @Tags customers
 // @Accept  json
 // @Produce  json
-// @Param customer body models.Customer true "Create Customer"
+// @Param customer body models.Customer true "Create customer"
 // @Success 200 {object} models.Customer
 // @Router /customers [post]
-
 func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	var customer models.Customer
 	json.NewDecoder(r.Body).Decode(&customer)
@@ -56,7 +55,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 // @Produce  json
 // @Param AccountNo path int true "ID of the customer to be updated"
 // @Success 200 {object} models.Customer
-// @Router /customers [put]
+// @Router /customers/{accountNo} [put]
 func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 	var updatedCustomer models.Customer
 	json.NewDecoder(r.Body).Decode(&updatedCustomer)

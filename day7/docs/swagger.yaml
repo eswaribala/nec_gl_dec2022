@@ -45,16 +45,17 @@ paths:
       summary: Retrieving Customers
       tags:
       - customers
-    put:
+    post:
       consumes:
       - application/json
-      description: Update the customer corresponding to the input AccountNo
+      description: Create a new customer with the input paylod
       parameters:
-      - description: ID of the customer to be updated
-        in: path
-        name: AccountNo
+      - description: Create customer
+        in: body
+        name: customer
         required: true
-        type: integer
+        schema:
+          $ref: '#/definitions/models.Customer'
       produces:
       - application/json
       responses:
@@ -62,7 +63,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.Customer'
-      summary: Update customer identified by the given AccountNo
+      summary: Create a new customer
       tags:
       - customers
   /customers/{accountNo}:
@@ -102,6 +103,26 @@ paths:
           schema:
             $ref: '#/definitions/models.Customer'
       summary: Get details for a given accountNo
+      tags:
+      - customers
+    put:
+      consumes:
+      - application/json
+      description: Update the customer corresponding to the input AccountNo
+      parameters:
+      - description: ID of the customer to be updated
+        in: path
+        name: AccountNo
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Update customer identified by the given AccountNo
       tags:
       - customers
 swagger: "2.0"
