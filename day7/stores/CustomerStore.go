@@ -66,8 +66,8 @@ func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetCustomers godoc
-// @Summary Retrieving Customers
-// @Description Retrieve customers from db
+// @Summary Get details of all customers
+// @Description Get details of all customers
 // @Tags customers
 // @Accept  json
 // @Produce  json
@@ -75,10 +75,9 @@ func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 // @Router /customers [get]
 func GetCustomers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var customers *[]models.Customer
+	var customers []models.Customer
 	db.Find(&customers)
 	json.NewEncoder(w).Encode(customers)
-
 }
 
 // GetCustomerById godoc

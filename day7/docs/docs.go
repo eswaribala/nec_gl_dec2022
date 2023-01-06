@@ -34,7 +34,7 @@ var doc = `{
     "paths": {
         "/customers": {
             "get": {
-                "description": "Retrieve customers from db",
+                "description": "Get details of all customers",
                 "consumes": [
                     "application/json"
                 ],
@@ -44,7 +44,7 @@ var doc = `{
                 "tags": [
                     "customers"
                 ],
-                "summary": "Retrieving Customers",
+                "summary": "Get details of all customers",
                 "responses": {
                     "200": {
                         "description": "OK",

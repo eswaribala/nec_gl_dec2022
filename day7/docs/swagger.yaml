@@ -32,7 +32,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Retrieve customers from db
+      description: Get details of all customers
       produces:
       - application/json
       responses:
@@ -42,7 +42,7 @@ paths:
             items:
               $ref: '#/definitions/models.Customer'
             type: array
-      summary: Retrieving Customers
+      summary: Get details of all customers
       tags:
       - customers
     post:
