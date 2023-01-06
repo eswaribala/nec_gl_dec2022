@@ -1,10 +1,12 @@
 package stores
 
 import (
+	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"necdec2022/day7/models"
+	"net/http"
 )
 
 var db *gorm.DB
@@ -35,8 +37,13 @@ func InitDB() {
 // @Success 200 {object} models.Customer
 // @Router /customers [post]
 
-func CreateCustomer() {
-
+func CreateCustomer(w http.ResponseWriter, r *http.Request) {
+	var customer models.Customer
+	json.NewDecoder(r.Body).Decode(&customer)
+	// Creates new customer by inserting records in the `customers` and `items` table
+	db.Create(&customer)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(customer)
 }
 
 // put
