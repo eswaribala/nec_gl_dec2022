@@ -53,9 +53,9 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 // @Tags customers
 // @Accept  json
 // @Produce  json
-// @Param AccountNo path int true "ID of the customer to be updated"
+// @Param customer body models.Customer true "update customer"
 // @Success 200 {object} models.Customer
-// @Router /customers/{accountNo} [put]
+// @Router /customers [put]
 func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 	var updatedCustomer models.Customer
 	json.NewDecoder(r.Body).Decode(&updatedCustomer)
@@ -116,6 +116,6 @@ func DeleteCustomerById(w http.ResponseWriter, r *http.Request) {
 	// Convert uint64 to uint
 	idToDelete := uint(id64)
 
-	db.Where("accountNo = ?", idToDelete).Delete(&models.Customer{})
+	db.Where("account_no=?", idToDelete).Delete(&models.Customer{})
 	w.WriteHeader(http.StatusNoContent)
 }
