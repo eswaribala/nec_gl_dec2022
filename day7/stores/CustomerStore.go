@@ -56,7 +56,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 // @Produce  json
 // @Param AccountNo path int true "ID of the customer to be updated"
 // @Success 200 {object} models.Customer
-// @Router /customers/{accountNo} [post]
+// @Router /customers [put]
 func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 	var updatedCustomer models.Customer
 	json.NewDecoder(r.Body).Decode(&updatedCustomer)
