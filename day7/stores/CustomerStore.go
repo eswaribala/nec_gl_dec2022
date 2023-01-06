@@ -8,6 +8,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"necdec2022/day7/models"
 	"net/http"
+	"strconv"
 )
 
 var db *gorm.DB
@@ -47,9 +48,22 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(customer)
 }
 
-// put
+// UpdateCustomer godoc
+// @Summary Update customer identified by the given AccountNo
+// @Description Update the customer corresponding to the input AccountNo
+// @Tags customers
+// @Accept  json
+// @Produce  json
+// @Param AccountNo path int true "ID of the customer to be updated"
+// @Success 200 {object} models.Customer
+// @Router /customers/{accountNo} [post]
 func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
+	var updatedCustomer models.Customer
+	json.NewDecoder(r.Body).Decode(&updatedCustomer)
+	db.Save(&updatedCustomer)
 
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(updatedCustomer)
 }
 
 // GetCustomers godoc
@@ -87,7 +101,23 @@ func GetCustomerById(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(customer)
 }
 
-// delete
+// DeleteCustomerById godoc
+// @Summary Delete customer identified by the given accountNo
+// @Description Delete the customer corresponding to the input accountNo
+// @Tags customers
+// @Accept  json
+// @Produce  json
+// @Param accountNo path int true "ID of the customer to be deleted"
+// @Success 204 "No Content"
+// @Router /customers/{accountNo} [delete]
 func DeleteCustomerById(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	inputAccountNo := params["accountNo"]
+	// Convert `traderId` string param to uint64
+	id64, _ := strconv.ParseUint(inputAccountNo, 10, 64)
+	// Convert uint64 to uint
+	idToDelete := uint(id64)
 
+	db.Where("accountNo = ?", idToDelete).Delete(&models.Customer{})
+	w.WriteHeader(http.StatusNoContent)
 }
