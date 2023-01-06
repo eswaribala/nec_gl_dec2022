@@ -37,10 +37,8 @@ func main() {
 	// Initialize db connection
 	stores.InitDB()
 
-	//log.Fatal(http.ListenAndServe(":7070", router))
-
 	// Swagger
 	router.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
 	//router.PathPrefix("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	log.Fatal(http.ListenAndServe(":6062", router))
+	log.Fatal(http.ListenAndServe(":6064", router))
 }
