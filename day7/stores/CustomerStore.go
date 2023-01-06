@@ -24,3 +24,37 @@ func InitDB() {
 	db.AutoMigrate(&models.Customer{})
 
 }
+
+// CreateCustomer godoc
+// @Summary Create a new Customer
+// @Description Create a new customer with the input payload
+// @Tags customers
+// @Accept  json
+// @Produce  json
+// @Param customer body models.Customer true "Create Customer"
+// @Success 200 {object} models.Customer
+// @Router /customers [post]
+
+func CreateCustomer() {
+
+}
+
+// put
+func UpdateCustomer() {
+
+}
+
+// get
+func GetCustomers() {
+
+}
+
+// get
+func GetCustomerById() {
+
+}
+
+// delete
+func DeleteCustomerById() {
+
+}
