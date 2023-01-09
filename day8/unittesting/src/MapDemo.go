@@ -22,7 +22,7 @@ func init() {
 
 }
 
-func checkUserId(userId int32) bool {
+func CheckUserId(userId int32) bool {
 
 	if _, ok := users[int(userId)]; !ok {
 		return false
