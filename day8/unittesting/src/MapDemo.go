@@ -29,3 +29,11 @@ func CheckUserId(userId int32) bool {
 	}
 	return true
 }
+
+func CheckUserName(userId int32) models.User {
+	keys := make([]int, 5)
+	for pos, _ := range users {
+		keys[pos] = pos
+	}
+	return users[keys[userId]]
+}

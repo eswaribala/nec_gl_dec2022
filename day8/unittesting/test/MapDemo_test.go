@@ -8,6 +8,6 @@ import (
 
 func TestCheckUserExistOrNot(t *testing.T) {
 	assert := assert2.New(t)
-	assert.Equal(true, src.CheckUserId(int32(45)))
+	assert.Equal(true, src.CheckUserId(int32(2)))
 
 }
