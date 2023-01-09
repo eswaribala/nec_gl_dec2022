@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// go build -buildmode=c-archive main.go
+// go build -buildmode=c-archive print.go
 
 //export ShowData
 func ShowData(data int) {
