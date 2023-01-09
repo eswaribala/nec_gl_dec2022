@@ -2,7 +2,7 @@ package src
 
 import (
 	"math/rand"
-	"necdec2022/day2/models"
+	"necdec2022/day8/unittesting/models"
 )
 
 var users map[int]models.User
