@@ -11,3 +11,9 @@ func TestCheckUserExistOrNot(t *testing.T) {
 	assert.Equal(true, src.CheckUserId(int32(2)))
 
 }
+
+func TestCheckUserNameExistOrNot(t *testing.T) {
+	assert := assert2.New(t)
+	assert.True(len(src.CheckUserName(int32(2)).FirstName) > 0)
+
+}
