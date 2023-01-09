@@ -27,7 +27,7 @@ func TestGenearteOTP(t *testing.T) {
 	// passes 10 into randomInt, we pass 10 in as the argument
 	// to go with randomInt, and specify that we want the
 	// method to return 6.
-	m.On("GetOTP", 10000).Return(rand.Int31n(10))
+	m.On("GetOTP", 10000).Return(int(rand.Int31n(10)))
 
 	// now run divByRand and assert that we got back the
 	// return value we expected, just like in a Go test that
